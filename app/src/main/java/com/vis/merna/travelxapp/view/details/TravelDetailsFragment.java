@@ -1,6 +1,7 @@
 package com.vis.merna.travelxapp.view.details;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.vis.merna.travelxapp.R;
@@ -33,6 +35,8 @@ public class TravelDetailsFragment extends Fragment {
     TextView toTextView;
     @BindView(R.id.travel_details_notes_recycler_view)
     RecyclerView notesRecycleView;
+    @BindView(R.id.travel_details_start_button)
+    Button startTravelButton;
 
     private Travel travel;
 
@@ -54,7 +58,7 @@ public class TravelDetailsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             travel = getArguments().getParcelable(Constants.ARG_TRAVEL);
-        }else {
+        } else {
             travel = ((TravelDetailActivity) getActivity()).getTravelData();
         }
     }
@@ -66,7 +70,20 @@ public class TravelDetailsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_travel_details, container, false);
         ButterKnife.bind(this, rootView);
         setContent();
+        setOnStartButtonAction();
         return rootView;
+    }
+
+    private void setOnStartButtonAction() {
+        startTravelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+// TODO: 4/12/2019  handle two pane
+                Intent intent = new Intent(getContext(), MapActivity.class);
+                intent.putExtra(Constants.ARG_TRAVEL, travel);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setContent() {

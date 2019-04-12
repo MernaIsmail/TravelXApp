@@ -6,7 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +46,7 @@ public class AddTravelDetailsFragment extends Fragment {
     EditText travelTimeEditText;
     @BindView(R.id.travel_details_travel_date)
     EditText travelDateEditText;
-//    @BindView(R.id.notes_recycler_view)
+    //    @BindView(R.id.notes_recycler_view)
 //    RecyclerView notesRecycleView;
     @BindView(R.id.travel_details_fixed_button)
     Button saveUpdateButton;
@@ -110,8 +109,13 @@ public class AddTravelDetailsFragment extends Fragment {
         saveUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Travel travel = new Travel(travelNameEditText.getText().toString(), startPoint,
-                        startLong, startLat, endPoint, endLong, endLat,
+                Travel travel = new Travel(travelNameEditText.getText().toString(),
+                        startPoint,
+                        endPoint,
+                        startLong,
+                        endLong,
+                        startLat,
+                        endLat,
                         "upcoming", calendar.getTimeInMillis());
                 addTravelDetailsPresenter.saveTravelAction(travel);
             }

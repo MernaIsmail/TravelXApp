@@ -148,4 +148,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/travel_details_start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/button_selector"
+        android:text="@string/travel_details_start"
+        android:textAllCaps="false" />
+
 </LinearLayout>
