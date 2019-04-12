@@ -21,4 +21,6 @@
     <string name="upcoming_page_title">Upcoming</string>
     <string name="history_page_title">History</string>
     <string name="notes_title">Notes:</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

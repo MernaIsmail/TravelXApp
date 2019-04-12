@@ -13,7 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.details.TravelDetailActivity"></activity>
+        <receiver android:name=".widget.TravelAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/travel_app_widget_info" />
+        </receiver>
+
+        <activity android:name=".view.details.TravelDetailActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

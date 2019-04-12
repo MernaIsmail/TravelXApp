@@ -18,4 +18,5 @@ public class Constants {
     public static final String STATUS_UPCOMING_VALUE = "upcoming";
     public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("d-M-yyyy hh:mm");
     public static final String ARG_TRAVEL = "arg_travel";
+    public static String WIDGET_TRAVEL_KEY = "widget_travel_key";
 }
