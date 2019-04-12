@@ -5,17 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.vis.merna.travelxapp.R;
 import com.vis.merna.travelxapp.model.Travel;
 import com.vis.merna.travelxapp.utils.Constants;
 import com.vis.merna.travelxapp.utils.DateParserUtil;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,10 +36,12 @@ public class TravelDetailsFragment extends Fragment {
     TextView fromTextView;
     @BindView(R.id.travel_details_to_text_view)
     TextView toTextView;
-    @BindView(R.id.travel_details_notes_recycler_view)
-    RecyclerView notesRecycleView;
+    @BindView(R.id.travel_details_notes_text_view)
+    TextView notesListTextView;
     @BindView(R.id.travel_details_start_button)
     Button startTravelButton;
+    @BindView(R.id.travel_details_done_button)
+    Button doneTravelButton;
 
     private Travel travel;
 
@@ -75,19 +80,35 @@ public class TravelDetailsFragment extends Fragment {
 
         setContent();
         setOnStartButtonAction();
+        setOnDoneButtonAction();
         return rootView;
+    }
+
+    private void setOnDoneButtonAction() {
+        doneTravelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: 4/12/2019 remove later to presenter
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference = database.getReference(Constants.REFERENCE_PATH).child(travel.getId()).child(Constants.STATUS_KEY);
+                databaseReference.setValue("#Done");
+                getActivity().finish();
+            }
+        });
     }
 
     private void setOnStartButtonAction() {
         startTravelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // TODO: 4/12/2019 remove later to presenter
                 Intent intent = new Intent(getContext(), MapActivity.class);
                 intent.putExtra(Constants.ARG_TRAVEL, travel);
                 startActivity(intent);
             }
         });
     }
+
 
     private void setContent() {
         if (travel != null) {
@@ -97,6 +118,16 @@ public class TravelDetailsFragment extends Fragment {
             String date[] = DateParserUtil.parseLongDateToStrings(travel.getDate());
             dateTextView.setText(date[0]);
             timeTextView.setText(date[1]);
+            if (travel.getNotes() != null && travel.getNotes().size() != 0)
+                setNotesList(travel.getNotes());
         }
+    }
+
+    private void setNotesList(ArrayList<String> notes) {
+        String notesString = "";
+        for (String note : notes) {
+            notesString += note + "\n";
+        }
+        notesListTextView.setText(notesString);
     }
 }

@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +30,9 @@ import com.vis.merna.travelxapp.presnter.AddTravelDetailsPresenter;
 import com.vis.merna.travelxapp.presnter.IAddTravelDetailsPresenter;
 import com.vis.merna.travelxapp.reminder.Alarm;
 import com.vis.merna.travelxapp.utils.Constants;
-import com.vis.merna.travelxapp.utils.SharedPreferencesHelper;
 import com.vis.merna.travelxapp.view.details.TravelDetailActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -51,8 +53,8 @@ public class AddTravelDetailsFragment extends Fragment {
     EditText travelTimeEditText;
     @BindView(R.id.travel_details_travel_date)
     EditText travelDateEditText;
-    //    @BindView(R.id.notes_recycler_view)
-//    RecyclerView notesRecycleView;
+    @BindView(R.id.notes_recycler_view)
+    RecyclerView notesRecycleView;
     @BindView(R.id.travel_details_fixed_button)
     Button saveUpdateButton;
     private EditText travelStartPointEditText, travelEndPointEditText;
@@ -61,6 +63,7 @@ public class AddTravelDetailsFragment extends Fragment {
     private String startPoint, startLong, startLat;
     private String endPoint, endLong, endLat;
     private Calendar calendar;
+    ArrayList<String> notes = new ArrayList<>();
 
 
     public AddTravelDetailsFragment() {
@@ -84,7 +87,7 @@ public class AddTravelDetailsFragment extends Fragment {
                 .findViewById(R.id.place_autocomplete_search_input);
         travelEndPointEditText = travelEndPointFragment.getView()
                 .findViewById(R.id.place_autocomplete_search_input);
-
+        setupNotesRecyclerView();
         handlePlacesFields();
         setListeners();
 
@@ -122,6 +125,7 @@ public class AddTravelDetailsFragment extends Fragment {
                         startLat,
                         endLat,
                         "upcoming", calendar.getTimeInMillis());
+                travel.setNotes(notes);
                 addTravelDetailsPresenter.saveTravelAction(travel);
 
                 //Create new or update PendingIntent and add it to the AlarmManager
@@ -131,6 +135,13 @@ public class AddTravelDetailsFragment extends Fragment {
                 getActivity().finish();
             }
         });
+    }
+
+    private void setupNotesRecyclerView() {
+        NotesRecyclerAdapter notesRecyclerAdapter = new NotesRecyclerAdapter(getContext(), notes);
+        notesRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        notesRecycleView.setAdapter(notesRecyclerAdapter);
+        notesRecyclerAdapter.notifyDataSetChanged();
     }
 
     private void navigateToTravelDetails(Travel travel) {

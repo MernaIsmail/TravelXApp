@@ -139,8 +139,8 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/travel_details_notes_recycler_view"
+        <TextView
+            android:id="@+id/travel_details_notes_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -156,6 +156,14 @@
         android:background="@drawable/button_selector"
         android:text="@string/travel_details_start"
         android:visibility="gone"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/travel_details_done_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="@string/travel_details_done"
         android:textAllCaps="false" />
 
 </LinearLayout>
