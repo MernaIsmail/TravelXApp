@@ -18,7 +18,7 @@ public class TravelReminderIntentService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         String action = intent.getAction();
         Bundle bundle = intent.getExtras();
-        Travel travel = bundle.getParcelable(Constants.REMINDER_BUNDLE);
+        Travel travel = bundle.getParcelable(ReminderTask.ARG_DONE_TRAVEL);
         ReminderTask.executeTask(travel, action);
 
     }
