@@ -69,6 +69,10 @@ public class TravelDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_travel_details, container, false);
         ButterKnife.bind(this, rootView);
+
+        if (!getResources().getBoolean(R.bool.twoPaneMode))
+            startTravelButton.setVisibility(View.VISIBLE);
+
         setContent();
         setOnStartButtonAction();
         return rootView;
@@ -78,7 +82,6 @@ public class TravelDetailsFragment extends Fragment {
         startTravelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-// TODO: 4/12/2019  handle two pane
                 Intent intent = new Intent(getContext(), MapActivity.class);
                 intent.putExtra(Constants.ARG_TRAVEL, travel);
                 startActivity(intent);

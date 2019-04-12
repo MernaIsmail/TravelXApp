@@ -18,6 +18,8 @@ public class AddTravelDetailsPresenter implements IAddTravelDetailsPresenter {
     @Override
     public void saveTravelAction(Travel travel) {
         String key = databaseReference.push().getKey();
+        travel.setId(key);
         databaseReference.child(key).setValue(travel);
     }
+
 }

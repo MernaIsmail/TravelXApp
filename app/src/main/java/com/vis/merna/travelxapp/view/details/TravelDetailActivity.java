@@ -24,6 +24,18 @@ public class TravelDetailActivity extends AppCompatActivity {
             travel = bundle.getParcelable(Constants.ARG_TRAVEL);
         }
         setContentView(R.layout.activity_travel_detail);
+
+        if (getResources().getBoolean(R.bool.twoPaneMode)) {
+            if (savedInstanceState == null & travel != null) {
+                Bundle arguments = new Bundle();
+                arguments.putParcelable(Constants.ARG_TRAVEL, travel);
+                MapFragment fragment = new MapFragment();
+                fragment.setArguments(arguments);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.travel_map_container, fragment)
+                        .commit();
+            }
+        }
     }
 
     public Travel getTravelData() {

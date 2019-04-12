@@ -17,7 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.details.MapActivity"></activity>
+        <activity
+            android:name=".reminder.ReminderActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:taskAffinity=""
+            android:theme="@style/AppTheme.Dialog" />
+        <receiver android:name=".reminder.AlarmBroadcastReceiver" />
+        <activity android:name=".view.details.MapActivity" />
 
         <receiver android:name=".widget.TravelAppWidget">
             <intent-filter>
@@ -46,6 +54,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.TravelReminderIntentService"
+            android:exported="false" />
+
     </application>
 
 </manifest>

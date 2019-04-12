@@ -155,6 +155,7 @@
         android:layout_margin="15dp"
         android:background="@drawable/button_selector"
         android:text="@string/travel_details_start"
+        android:visibility="gone"
         android:textAllCaps="false" />
 
 </LinearLayout>

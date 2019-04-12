@@ -4,6 +4,7 @@ package com.vis.merna.travelxapp.view;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -25,6 +26,10 @@ import com.vis.merna.travelxapp.R;
 import com.vis.merna.travelxapp.model.Travel;
 import com.vis.merna.travelxapp.presnter.AddTravelDetailsPresenter;
 import com.vis.merna.travelxapp.presnter.IAddTravelDetailsPresenter;
+import com.vis.merna.travelxapp.reminder.Alarm;
+import com.vis.merna.travelxapp.utils.Constants;
+import com.vis.merna.travelxapp.utils.SharedPreferencesHelper;
+import com.vis.merna.travelxapp.view.details.TravelDetailActivity;
 
 import java.util.Calendar;
 
@@ -118,8 +123,22 @@ public class AddTravelDetailsFragment extends Fragment {
                         endLat,
                         "upcoming", calendar.getTimeInMillis());
                 addTravelDetailsPresenter.saveTravelAction(travel);
+
+                //Create new or update PendingIntent and add it to the AlarmManager
+                Alarm.setAlarm(getContext(), travel, calendar.getTimeInMillis());
+
+                navigateToTravelDetails(travel);
+                getActivity().finish();
             }
         });
+    }
+
+    private void navigateToTravelDetails(Travel travel) {
+        Intent intent = new Intent(getContext(), TravelDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(Constants.ARG_TRAVEL, travel);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void handlePlacesFields() {

@@ -24,4 +24,8 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="travel_details_start">start</string>
+    <string name="dialog_title">Dialog.....</string>
+    <string name="reminder_done_text">Done</string>
+    <string name="reminder_cancel_text">Cancel</string>
+    <string name="reminder_start_text">Start</string>
 </resources>

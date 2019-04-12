@@ -11,7 +11,7 @@ import com.vis.merna.travelxapp.utils.SharedPreferencesHelper;
 
 public class TravelWidgetService extends RemoteViewsService {
     public static void updateWidget(Context context, Travel travel) {
-        SharedPreferencesHelper.saveRecipe(context, travel);
+        SharedPreferencesHelper.saveTravel(context, travel);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context, TravelAppWidget.class));
         TravelAppWidget.updateAppWidgets(context, appWidgetManager, appWidgetIds);

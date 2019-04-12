@@ -9,7 +9,7 @@ import com.vis.merna.travelxapp.model.Travel;
 public class SharedPreferencesHelper {
     public static final String PREFS_NAME = "prefs";
 
-    public static void saveRecipe(Context context, Travel travel) {
+    public static void saveTravel(Context context, Travel travel) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE).edit();
         Gson gson = new Gson();
         String json = gson.toJson(travel);
