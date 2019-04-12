@@ -17,12 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <!--todo add image-->
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:src="@drawable/date" />
 
             <TextView
                 android:id="@+id/travel_details_date_text_view"
@@ -40,11 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <!--todo add image-->
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="5dp"
+                android:src="@drawable/time" />
 
             <TextView
                 android:id="@+id/travel_details_time_text_view"
@@ -152,17 +153,18 @@
         android:id="@+id/travel_details_start_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:background="@drawable/button_selector"
         android:text="@string/travel_details_start"
-        android:visibility="gone"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/travel_details_done_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:background="@drawable/secondary_button_selector"
         android:text="@string/travel_details_done"
         android:textAllCaps="false" />
 
