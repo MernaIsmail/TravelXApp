@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "528783254528",
+    "firebase_url": "https://travelx-a1712.firebaseio.com",
+    "project_id": "travelx-a1712",
+    "storage_bucket": "travelx-a1712.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528783254528:android:1481e319d4dfb954",
+        "android_client_info": {
+          "package_name": "com.vis.merna.travelxapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528783254528-8770nbeq0lnq9mtfn56assr54dt2drdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8NpwB0v25WZAkmUyI3eFX6rcOyvDPaEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528783254528-8770nbeq0lnq9mtfn56assr54dt2drdg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

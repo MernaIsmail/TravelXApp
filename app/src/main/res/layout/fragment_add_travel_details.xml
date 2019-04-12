@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/travel_details_fixed_button_layout"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_color"
+            android:padding="16dp"
+            tools:context=".view.AddTravelDetailsFragment">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/travel_details_travel_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_border"
+                        android:hint="@string/travel_details_name"
+                        android:padding="5dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/travel_details_travel_date"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/edit_text_border"
+                            android:editable="false"
+                            android:clickable="true"
+                            android:hint="@string/travel_details_date"
+                            android:padding="5dp" />
+
+                        <EditText
+                            android:id="@+id/travel_details_travel_time"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/edit_text_border"
+                            android:editable="false"
+                            android:clickable="true"
+                            android:hint="@string/travel_details_time"
+                            android:padding="5dp" />
+                    </RelativeLayout>
+
+                    <fragment
+                        android:id="@+id/travel_details_travel_start_point"
+                        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <fragment
+                        android:id="@+id/travel_details_travel_end_point"
+                        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <!--<android.support.v7.widget.RecyclerView-->
+                        <!--android:id="@+id/notes_recycler_view"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="15dp" />-->
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </FrameLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/travel_details_fixed_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/black333333">
+
+        <Button
+            android:id="@+id/travel_details_fixed_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_selector"
+            android:enabled="false"
+            android:text="@string/travel_details_save"
+            android:textAllCaps="false" />
+    </FrameLayout>
+</RelativeLayout>

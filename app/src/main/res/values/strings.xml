@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">TravelXApp</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="travel_details_name">Enter travel name</string>
+    <string name="travel_details_start_point">Enter start point</string>
+    <string name="travel_details_end_point">Enter end point</string>
+    <string name="travel_details_date">Enter Date</string>
+    <string name="travel_details_time">Enter Time</string>
+    <string name="travel_details_save">Save</string>
+    <string name="travel_details_time_picker">please pick a valid time</string>
+    <string name="travel_details_date_picker">Select date</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyC_9uZBC_Sv84f4eAb4gZ2bsPHWBEi8NSY
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upcoming_page_title">Upcoming</string>
+    <string name="history_page_title">History</string>
+    <string name="notes_title">Notes:</string>
+</resources>
