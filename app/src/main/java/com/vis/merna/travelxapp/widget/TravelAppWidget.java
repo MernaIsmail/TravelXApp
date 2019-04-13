@@ -7,12 +7,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.vis.merna.travelxapp.MainActivity;
 import com.vis.merna.travelxapp.R;
 import com.vis.merna.travelxapp.model.Travel;
+import com.vis.merna.travelxapp.utils.Constants;
 import com.vis.merna.travelxapp.utils.DateParserUtil;
 import com.vis.merna.travelxapp.utils.SharedPreferencesHelper;
-import com.vis.merna.travelxapp.view.details.TravelDetailActivity;
 
 /**
  * Implementation of App Widget functionality.
@@ -23,6 +29,7 @@ public class TravelAppWidget extends AppWidgetProvider {
                                 int appWidgetId) {
 
         Travel travel = SharedPreferencesHelper.loadRecipe(context);
+
         if (travel != null) {
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.travel_app_widget);

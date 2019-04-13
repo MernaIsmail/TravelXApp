@@ -15,12 +15,14 @@ import com.vis.merna.travelxapp.R;
 import com.vis.merna.travelxapp.model.Travel;
 import com.vis.merna.travelxapp.utils.Constants;
 import com.vis.merna.travelxapp.utils.DateParserUtil;
+import com.vis.merna.travelxapp.utils.SharedPreferencesHelper;
 import com.vis.merna.travelxapp.view.details.TravelDetailActivity;
 
 public class TravelFirebaseAdapter extends FirebaseRecyclerAdapter<Travel, UpcomingViewHolder> {
 
     private static final String TYPE_UPCOMING = "upcoming";
     private Context context;
+    boolean flag = false;
 
 
     public TravelFirebaseAdapter(Context context, Class<Travel> modelClass,
@@ -40,6 +42,11 @@ public class TravelFirebaseAdapter extends FirebaseRecyclerAdapter<Travel, Upcom
 
     @Override
     protected void populateViewHolder(UpcomingViewHolder viewHolder, final Travel model, int position) {
+        if (!flag && model.getStatus().equals(Constants.STATUS_UPCOMING_VALUE)) {
+            //for default widget
+            SharedPreferencesHelper.saveTravel(context, model);
+            flag = true;
+        }
         viewHolder.travelNameTextView.setText(model.getName());
         viewHolder.travelStartPointTextView.setText(model.getStartPoint());
         viewHolder.travelEndPointTextView.setText(model.getEndPoint());
@@ -61,6 +68,11 @@ public class TravelFirebaseAdapter extends FirebaseRecyclerAdapter<Travel, Upcom
         } else {
             handleHistoryUI(viewHolder);
         }
+    }
+
+    @Override
+    public int getItemCount() {
+        return super.getItemCount();
     }
 
     void handleHistoryUI(UpcomingViewHolder holder) {

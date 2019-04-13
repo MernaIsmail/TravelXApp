@@ -28,7 +28,7 @@
     <string name="reminder_done_text">Done</string>
     <string name="reminder_cancel_text">Cancel</string>
     <string name="reminder_start_text">Start</string>
-    <string name="travel_details_done">Done</string>
+    <string name="travel_details_done">End trip</string>
     <string name="delete_action">delete</string>
     <string name="note_hint">+ Add Notes</string>
 </resources>
