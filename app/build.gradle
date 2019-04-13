@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'Capstone'
+            keyPassword 'nanodegree'
+            storeFile file('../nanodegreekeystore')
+            storePassword 'nanodegree'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.vis.merna.travelxapp"
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
